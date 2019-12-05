@@ -1,23 +1,24 @@
 import React, {Component} from 'react';
 import { withRouter } from 'react-router'
 import erCode from '../../assets/img/footer/erweima.png'
+import erCode1 from '../../assets/img/footer/erweima1.png'
 import './index.scss'
 
 const friendLink = [{
     name: '银山软件',
-    link: '123',
+    link: 'http://www.yessoft.com/#/home',
 }, {
     name: '域名商城',
-    link: '123'
+    link: 'http://www.mixname.com/#/home'
 }, {
     name: '聚空间',
-    link: '123'
+    link: 'http://www.juspace.com/'
 }, {
     name: '炒米网',
-    link: '123'
+    link: 'https://www.chaomi.cc/'
 }, {
     name: '比特币交易网',
-    link: '123'
+    link: 'https://www.btctrade.com/'
 }]
 const FOOTER_PRODUCT = [
     {
@@ -51,9 +52,6 @@ const FOOTER_ABOUT = [
   }, {
       name: '联系我们',
       path: '/contentUs'
-  }, {
-      name: '发展大事记',
-      path: '/develop'
   }
 ]
 @withRouter
@@ -76,7 +74,7 @@ export default class Footer extends Component {
                             <p className="footer-leftLine">
                                 <i className="iconfont iconkefu" />
                                 投资服务：
-                                010-82816692
+                                010-88911388
                                 &nbsp; &nbsp; &nbsp; &nbsp;
                                 <i className="iconfont iconshijian-" />
                                 服务时间：
@@ -133,7 +131,10 @@ export default class Footer extends Component {
                             </p>
                         </div>
                         <div className="footer-right">
-                            <img src={erCode} alt=""/>
+                            <div className="footer-rightImgs">
+                                <img src={erCode} alt=""/>
+                                <img src={erCode1} alt=""/>
+                            </div>
                             <p>微信联系我们</p>
                         </div>
                     </div>
@@ -143,7 +144,10 @@ export default class Footer extends Component {
                         <li>友情链接: </li>
                         {
                             friendLink.map(item => (
-                                <li key={item.name}>
+                                <li
+                                    key={item.name}
+                                    onClick={() => { window.open(item.link) }}
+                                >
                                     {item.name}
                                 </li>
                             ))

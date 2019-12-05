@@ -5,6 +5,7 @@ import Icon1 from '../../assets/img/home/icon1.png'
 import Icon2 from '../../assets/img/home/icon2.png'
 import Icon3 from '../../assets/img/home/icon3.png'
 import Icon4 from '../../assets/img/home/icon4.png'
+// 合作伙伴
 import New1 from '../../assets/img/home/new1.png'
 import New2 from '../../assets/img/home/new2.png'
 import New3 from '../../assets/img/home/new3.png'
@@ -13,6 +14,7 @@ import New5 from '../../assets/img/home/new5.png'
 import New6 from '../../assets/img/home/new6.png'
 import New7 from '../../assets/img/home/new7.png'
 import New8 from '../../assets/img/home/new8.png'
+// 合作媒体
 import Media1 from '../../assets/img/home/media1.png'
 import Media2 from '../../assets/img/home/media2.png'
 import Media3 from '../../assets/img/home/media3.png'
@@ -256,9 +258,9 @@ export default class Home extends Component {
                         <h4 className="home-content-title">{FIFTH_TITLE}</h4>
                         <ul>
                             {
-                                FIFTH_CONTENT.map(item => (
+                                FIFTH_CONTENT1.map(item => (
                                     <li key={item}>
-                                        <img src={item} alt=""/>
+                                        <img className="short" src={item} alt=""/>
                                     </li>
                                 ))
                             }
@@ -266,7 +268,7 @@ export default class Home extends Component {
                         <h4 className="home-content-title">{FIFTH_TITLE1}</h4>
                         <ul>
                             {
-                                FIFTH_CONTENT1.map(item => (
+                                FIFTH_CONTENT.map(item => (
                                     <li key={item}>
                                         <img src={item} alt=""/>
                                     </li>

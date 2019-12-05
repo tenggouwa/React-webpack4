@@ -25,7 +25,7 @@ export default class Deposit extends Component {
                     <img className="img1" src={Img1} alt=""/>
                 </div>
                 <div className="deposit-main">
-                    <h4 className="deposit-title">"业务板块"</h4>
+                    <h4 className="deposit-title">业务板块</h4>
                     <img className="img2" src={Img2} alt=""/>
                 </div>
             </div>

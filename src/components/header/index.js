@@ -7,46 +7,6 @@ import AboutImg from '../../assets/img/header/about.png'
 import Logo from '../../assets/img/home/logo.png'
 import './index.scss'
 
-// const headerList = [
-//     {
-//         name: '首页',
-//         path: '/'
-//     },
-//     {
-//         name: '区块链基础服务',
-//         path: '/product'
-//     },
-//     {
-//         name: '创业项目孵化',
-//         path: '/business'
-//     },
-//     {
-//         name: '区块链产业基金',
-//         path: '/fund'
-//     },
-//     {
-//         name: '数字存证',
-//         path: '/deposit'
-//     },
-//     {
-//         name: '新闻资讯',
-//         path: '/newList'
-//     },
-//     // {
-//     //     name: '关于我们',
-//     //     path: '/'
-//     // }
-//     {
-//         name: '公司简介',
-//         path: '/company'
-//     },{
-//         name: '联系我们',
-//         path: '/contentUs'
-//     },{
-//         name: '发展大事记',
-//         path: '/develop'
-//     }
-// ]
 const headerList = [
   {
       name: '首页',
@@ -91,12 +51,13 @@ const headerList = [
           name: '联系我们',
           path: '/contentUs',
       }, {
-          name: '发展大事记',
-          path: '/develop',
-      }, {
           name: '加入我们',
           path: '/addUs',
       }]
+    //   , {
+    //     name: '发展大事记',
+    //     path: '/develop',
+    // }, 
   }
 ]
 @withRouter
@@ -130,6 +91,22 @@ export default class Header extends Component {
             this.setState({ activeRouter: null })
         }
     }
+    // 选择子标签，展示父标签选中状态
+    chooseRouter = (item) => {
+        let status = false
+        const { pathname } = this.props.location
+        // path有的时候，说明是第一级标签，没有子元素
+        if (item.path && item.path === pathname) {
+            status = true
+        } else if (item.path === '') {
+            // 在下一级找，有相等的路径，就说明在这里
+            const array = item.dataList.filter(cat => cat.path === pathname)
+            if (array && array.length > 0) {
+                status = true
+            }
+        }
+        return status
+    }
     render() {
         return (
             <div className="header">
@@ -138,12 +115,19 @@ export default class Header extends Component {
                         <img src={Logo} alt=""/>
                         <span>聚链集团</span>
                     </div>
+                    <div className="gupiao" onClick={() => { this.props.history.push('/') }}>
+                        <div>
+                            <p>股票代码</p>
+                            <span>430361</span>
+                        </div>
+                    </div>
                     <ul>
                         {
                             headerList.map(item => (
                                 <li
                                     key={item.name}
-                                    className={(this.props.location.pathname === item.path) && item.path !== '' ? 'active' : null }
+                                    // className={(this.props.location.pathname === item.path) && item.path !== '' ? 'active' : null }
+                                    className={this.chooseRouter(item) ? 'active' : null }
                                     onClick={() => { this.jumpLink(item) }}
                                     onMouseEnter={() => { this.showPop(item) }}
                                     onMouseLeave={() => { this.hidePop(item) }}
@@ -177,7 +161,6 @@ export default class Header extends Component {
                         }
                     </ul>
                 </div>
-                <div className="header-right">122</div>
             </div>
         )
     }

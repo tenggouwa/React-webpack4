@@ -50,7 +50,7 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "dev": "webpack-dev-server --config ./build/webpack.dev.config.js --color --progress",
+    "dev": "webpack-dev-server --config ./build/webpack.dev.config.js --color --progress --open",
     "build": "webpack --config ./build/webpack.prod.config.js --color --progress"
   },
   "browserslist": [
