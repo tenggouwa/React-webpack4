@@ -1,0 +1,31 @@
+.contentUs{
+  .contentUs-banner{
+    width: 100%;
+    height: 491px;
+  }
+  .contentUs-main{
+    width: 1100px;
+    margin: 0 auto;
+    padding: 40px 0;
+    .contentUs-line{
+      margin: 10px 0;
+      p{
+        font-size:14px;
+        font-weight:500;
+        color:rgba(27,24,24,1);
+        line-height:14px;
+        display: inline-block;
+        margin-left: 20px;
+      }
+      .active{
+        color: #0798EF;
+      }
+    }
+    .contentUs-address{
+      width: 80%;
+      height: 500px;
+      margin-top: 35px;
+      margin: 0 auto;
+    }
+  }
+}

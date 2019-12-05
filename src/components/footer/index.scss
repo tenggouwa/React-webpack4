@@ -1,0 +1,113 @@
+.footer{
+  width: 100%;
+  height: 330px;
+  background-color: #021229;
+  background-image: url('../../assets/img/footer/bg.png');
+  background-size: auto 100%;
+  background-position-x: 100%;
+  background-repeat: no-repeat;
+  .footer-top{
+    position: relative;
+    .footer-top-main{
+      height: 278px;
+      display: flex;
+      width: 1200px;
+      margin: 0 auto;
+      padding-top: 50px;
+      .footer-left{
+        flex: 1;
+        .footer-leftLine{
+          font-size:12px;
+          font-weight:400;
+          color:rgba(222,222,222,1);
+          line-height:26px;
+          .iconfont {
+            font-size: 12px;
+            margin-right: 5px;
+          }
+          span{
+            margin-right: 10px;
+            position: relative;
+            cursor: pointer;
+          }
+          span:after{
+            content: '';
+            width: 1px;
+            height: 10px;
+            position: absolute;
+            right: -5px;
+            top: 4px;
+            background: rgba(222,222,222,1);
+          }
+          span:hover{
+            color: #0798EF;
+          }
+          span:last-child:after{
+            background:transparent;
+          }
+        }
+      }
+      .footer-right{
+        min-width: 510px;
+        position: relative;
+        padding-top: 20px;
+        img{
+          width: 140px;
+          height: 140px;
+          margin: 0 auto;
+          display: block;
+          margin-bottom: 20px;
+        }
+        p{
+          font-size:14px;
+          text-align: center;
+          color:rgba(255,255,255,1);
+          line-height:12px;
+        }
+      }
+      .footer-right:before{
+        content: '';
+        width: 1px;
+        height: 122px;
+        position: absolute;
+        left: 0px;
+        top: 4px;
+        background: rgba(222, 222, 222, 0.14);
+      }
+    }
+  }
+  .footer-top:after{
+    content: '';
+    width: 96%;
+    height: 1px;
+    background: #dbdbdb;
+    opacity: 0.14;
+    margin-left: 2%;
+    position: absolute;
+    bottom: 0;
+  }
+  .footer-bottom{
+    ul{
+      width: 1200px;
+      margin: 0 auto;
+      overflow: hidden;
+      li{
+        float: left;
+        font-size:12px;
+        font-weight:400;
+        color:rgba(222,222,222,1);
+        line-height:12px;
+        transition: color 0.2s linear;
+        line-height: 52px;
+        margin-right: 10px;
+      }
+      li:hover{
+        color: #0798EF;
+        cursor: pointer;
+      }
+      li:first-child:hover {
+        color:rgba(222,222,222,1);
+      }
+    }
+  }
+}

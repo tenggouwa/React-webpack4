@@ -76,7 +76,8 @@ module.exports = {
             template: path.resolve(__dirname, '..', "src/template.html"), // 指定模板路径
             minify: {
                 collapseWhitespace: true // 去除空白
-            }
+            },
+            favicon: path.resolve(__dirname, '..', 'fav.ico'),
         }),
         // happypack
         new HappyPack({

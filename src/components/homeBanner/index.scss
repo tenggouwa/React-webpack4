@@ -1,0 +1,64 @@
+.home-banner{
+    width: 100%;
+    height: 490px;
+    overflow: hidden;
+    .home-banner-main{
+      position: relative;
+      width: 440px;
+      height: 490px;
+      margin: 0 auto;
+    }
+    .home-banner-bg{
+      position: absolute;
+      left: 0;
+      top: 0;
+      animation: bgMove 20s linear infinite;
+    }
+    .home-banner-bg1{
+      position: absolute;
+      left: 0;
+      top: 0;
+      animation: bgMove 22s linear infinite;
+    }
+    .home-banner-bg2{
+      position: absolute;
+      left: 0;
+      top: 0;
+      animation: bgMove 9s linear infinite;
+    }
+    .home-banner-bg3{
+      position: absolute;
+      left: 0;
+      top: 0;
+      animation: bgMove1 7s linear infinite;
+    }
+    .home-banner-content{
+      width: 282px;
+      height: 282px;
+      border-radius: 50%;
+      background:linear-gradient(90deg,rgba(44,185,236,1) 0%,rgba(7,152,239,1) 100%);
+      position: absolute;
+      left: 80px;
+      top: 73px;
+      color: #fff;
+      text-align: center;
+      img{
+        width: 68px;
+        margin-top: 70px;
+      }
+      p{
+        font-size:30px;
+        font-weight:600;
+        letter-spacing:1px;
+        margin-top: 18px;
+      }
+    }
+}
+@keyframes bgMove {
+  from{ transform: rotate(0);}
+  to{ transform: rotate(360deg);}
+}
+@keyframes bgMove1 {
+  from{ transform: rotate(360deg);}
+  to{ transform: rotate(0);}
+}

@@ -1,0 +1,99 @@
+.newList{
+  .newList-banner{
+    width: 100%;
+    height: 491px;
+  }
+  .newList-main{
+    width: 1010px;
+    margin: 0 auto;
+    ul{
+      padding-top: 40px;
+      li{
+        padding: 20px;
+        height: 169px;
+        display: flex;
+        transition: all 0.3s linear;
+        background:#fff;
+        border-radius:4px;
+        margin-bottom: 35px;
+        border:1px solid rgba(211,211,211,1);
+        cursor: pointer;
+        .left{
+          min-width: 262px;
+          transition: all 0.3s linear;
+          height: 100%;
+          background-image: url('../../assets/img/home/newBg.png');
+          background-repeat: no-repeat;
+          background-size: 100%;
+          color: #fff;
+          text-align: right;
+          border-radius:4px;
+          padding: 10px;
+          p:first-child{
+            font-size:30px;
+            font-family:STHeitiSC-Medium,STHeitiSC;
+            font-weight:bold;
+            color:rgba(255,255,255,1);
+            line-height:30px;
+          }
+          p:last-child{
+            font-size:90px;
+            font-weight:bold;
+            color:rgba(255,255,255,1);
+            line-height:100px;
+          }
+        }
+        .right{
+          margin-left: 40px;
+          flex: 1;
+          transition: all 0.3s linear;
+          h5{
+            font-size:16px;
+            font-weight:500;
+            color:rgba(31,45,65,1);
+            line-height:16px;
+            margin-bottom: 20px;
+            margin-top: 30px;
+          }
+          .right-content{
+            font-size:14px;
+            color:rgba(115,114,114,1);
+            line-height:20px;
+          }
+          div{
+            float: right;
+            position: relative;
+            p{
+              display: inline-block;
+              font-size: 28px;
+              position: absolute;
+            }
+            p:first-child{
+              color: #D3D3D3;
+              margin-left: -41px;
+              margin-top: -15px;
+            }
+            p:last-child{
+              color: #1F2D41;
+              position: relative;
+              margin-left: 15px;
+            }
+            p:last-child:after{
+              content: '';
+              width: 2px;
+              height: 50px;
+              background: #D3D3D3;
+              position: absolute;
+              left: -10px;
+              top: -10px;
+              transform: rotate(20deg);
+            }
+          }
+        }
+      }
+      li:hover{
+        background: #FAFAFA;
+      }
+    }
+  }
+}

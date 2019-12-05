@@ -1,48 +1,74 @@
-const path = require("path");
-const webpack = require("webpack");
+const webpack = require('webpack')
+const config = require('./config')
 const merge = require('webpack-merge')
-const commonConfig = require('./webpack.base.config.js')
-const PurifyCSS = require('purifycss-webpack')
-const glob = require('glob-all')
-const WorkboxPlugin = require('workbox-webpack-plugin') // 引入 PWA 插件
+const baseWebpackConfig = require('./webpack.base.config.js')
 
 
-module.exports = merge(commonConfig, {
-    mode: "production",
+const webpackConfig = merge(baseWebpackConfig, {
+    mode: 'production',
     output: {
-        // 输出目录
-        path: path.resolve(__dirname, "../dist"),
-        // 文件名称
-        filename: '[name].[contenthash].js',
-        chunkFilename: '[name].[contenthash].js'
+        path: config.build.assetsRoot,
+        filename: 'js/[name].[chunkhash].js',
+        chunkFilename: 'js/[name].[chunkhash].js'
     },
-    devtool: 'cheap-module-source-map',
+    module: {
+        rules: []
+    },
+    plugins: [
+        new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en|zh-cn|ko/),
+        new webpack.optimize.ModuleConcatenationPlugin(),
+        new webpack.optimize.MinChunkSizePlugin({
+            minChunkSize: 70000
+        }),
+
+    ],
     optimization: {
-        usedExports: true,
+        runtimeChunk: {
+            name: 'manifest'
+        },
         splitChunks: {
-            chunks: "all", // 所有的 chunks 代码公共的部分分离出来成为一个单独的文件
+            chunks: "initial",
+            minSize: 70000,
+            minChunks: 1,
+            maxAsyncRequests: 5,
+            maxInitialRequests: 3,
+            automaticNameDelimiter: '.',
+            name: true,
             cacheGroups: {
-                vendors: {
+                commons: {
                     test: /[\\/]node_modules[\\/]/,
-                    name: 'vendors'
+                    name: "vendors",
+                    reuseExistingChunk: true
+                },
+                tools: {
+                    test: /[\\/]src[\\/]tools[\\/]/,
+                    name: "tools"
                 }
             }
         },
     },
-    plugins: [
-        // 清除无用 css---生产环境---csstree-shaking
-        new PurifyCSS({
-            paths: glob.sync([
-                // 要做 CSS Tree Shaking 的路径文件
-                path.resolve(__dirname, '..', 'src/*.html'),
-                path.resolve(__dirname, '..', 'src/*.js'),
-                path.resolve(__dirname, '..', 'src/**/*.jsx'),
-            ])
-        }),
-        // PWA配置，生产环境才需要
-        new WorkboxPlugin.GenerateSW({
-            clientsClaim: true,
-            skipWaiting: true
-        }),
-    ]
-});
+    performance: {
+        hints: false
+    }
+})
+
+if (config.build.productionGzip) {
+    const CompressionWebpackPlugin = require('compression-webpack-plugin')
+
+    webpackConfig.plugins.push(
+        new CompressionWebpackPlugin({
+            asset: '[path].gz[query]',
+            algorithm: 'gzip',
+            test: new RegExp(
+                '\\.(' +
+                config.build.productionGzipExtensions.join('|') +
+                ')$'
+            ),
+            threshold: 10240,
+            minRatio: 0.8
+        })
+    )
+}
+
+
+module.exports = webpackConfig

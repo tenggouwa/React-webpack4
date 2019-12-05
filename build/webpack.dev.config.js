@@ -27,7 +27,7 @@ module.exports = merge(commonConfig, {
         hot: true,
         contentBase: path.resolve(__dirname, "../dist"),
         host: "localhost", // 可以使用手机访问
-        port: 3000,
+        port: 3001,
         historyApiFallback: true, //  该选项的作用所有的404都连接到index.html
         proxy: {
             // 代理到后端的服务地址
